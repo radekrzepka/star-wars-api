@@ -99,10 +99,15 @@ jobs:
           DATABASE_URL: postgresql://test_user:test_password@localhost:5432/star_wars_test_db
         run: pnpm run db:seed
 
-      - name: Run tests with coverage
+      - name: Run unit tests with coverage
         env:
           DATABASE_URL: postgresql://test_user:test_password@localhost:5432/star_wars_test_db
         run: pnpm run test:cov
+
+      - name: Run end-to-end tests
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/star_wars_test_db
+        run: pnpm run test:e2e
 
       - name: Upload coverage artifacts
         uses: actions/upload-artifact@v4
