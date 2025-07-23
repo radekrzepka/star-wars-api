@@ -8,7 +8,8 @@ A NestJS-based REST API for managing Star Wars characters with full CRUD operati
 - **PostgreSQL Database** with Drizzle ORM
 - **Docker Support** for local development
 - **Strict TypeScript** configuration
-- **Comprehensive Testing** setup
+- **Comprehensive Testing** setup with coverage reporting
+- **GitHub Actions CI/CD** pipeline with automated testing
 - **API Documentation** with Swagger
 
 ## Tech Stack
@@ -99,7 +100,15 @@ API documentation is available at `/api/docs` when the application is running.
 
 ## Testing
 
-The project uses Jest for testing with strict TypeScript configuration:
+The project uses Jest for testing with comprehensive coverage reporting and database integration:
+
+### Test Configuration
+
+- **Coverage thresholds** set at 80% for branches, functions, lines, and statements
+- **Test database** configured via environment variables
+- **Simplified test setup** using existing seed script
+
+### Running Tests
 
 ```bash
 # Run all tests
@@ -110,7 +119,35 @@ pnpm run test:watch
 
 # Run with coverage report
 pnpm run test:cov
+
+# Run e2e tests
+pnpm run test:e2e
 ```
+
+## CI/CD Pipeline
+
+The project includes a comprehensive GitHub Actions workflow that:
+
+### **Automated Testing**
+
+- Sets up PostgreSQL test database
+- Runs linting and type checking
+- Builds application to verify compilation
+- Executes tests with coverage reporting
+- Generates coverage reports with 80% threshold
+
+### **Build Process**
+
+- Validates TypeScript compilation
+- Ensures build succeeds before testing
+- Creates production build artifacts
+
+### **Quality Gates**
+
+- ESLint with strict type-aware rules
+- TypeScript strict mode validation
+- Test coverage requirements
+- Build success validation
 
 ## Code Quality
 
