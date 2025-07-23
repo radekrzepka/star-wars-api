@@ -1,99 +1,200 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Star Wars API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A NestJS-based REST API for managing Star Wars characters with full CRUD operations, built with TypeScript and PostgreSQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+- **Full CRUD Operations** for Star Wars characters
+- **PostgreSQL Database** with Drizzle ORM
+- **Docker Support** for local development
+- **Strict TypeScript** configuration
+- **Comprehensive Testing** setup
+- **API Documentation** with Swagger
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Tech Stack
 
-## Project setup
+- **Framework:** NestJS
+- **Language:** TypeScript
+- **Database:** PostgreSQL
+- **ORM:** Drizzle ORM
+- **Container:** Docker & Docker Compose
+- **Testing:** Jest
 
-```bash
-$ pnpm install
-```
+## Quick Start
 
-## Compile and run the project
+### Prerequisites
+
+- Node.js (v18+)
+- pnpm
+- Docker & Docker Compose
+
+### 1. Clone and Install
 
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+git clone https://github.com/radekrzepka/star-wars-api
+cd star-wars-api
+pnpm install
 ```
 
-## Run tests
+### 2. Environment Setup
+
+Create a `.env` file in the root directory, for local development you can copy and paste environmental variables from `.env.example`
+
+### 3. Database Setup
+
+Start the PostgreSQL database:
 
 ```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+pnpm run docker:db:up
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Run database migrations:
 
 ```bash
-$ pnpm install -g mau
-$ mau deploy
+pnpm run db:migrate
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Seed the database:
 
-## Resources
+```bash
+pnpm run db:seed
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### 4. Start Development
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+pnpm run start:dev
+```
 
-## Support
+## API Documentation
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+API documentation is available at `/api/docs` when the application is running.
 
-## Stay in touch
+## Available Scripts
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Development
 
-## License
+- `pnpm run start:dev` - Start development server with hot reload
+- `pnpm run start:debug` - Start with debugging enabled
+- `pnpm run build` - Build for production
+- `pnpm run start:prod` - Start production server
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+### Database
+
+- `pnpm run docker:db:up` - Start PostgreSQL container
+- `pnpm run docker:db:down` - Stop PostgreSQL container
+- `pnpm run db:generate` - Generate database migrations
+- `pnpm run db:migrate` - Run database migrations
+- `pnpm run db:push` - Push schema changes to database
+- `pnpm run db:studio` - Open Drizzle Studio (database GUI)
+- `pnpm run db:seed` - Seed database with sample data
+
+### Code Quality
+
+- `pnpm run lint` - Run ESLint
+- `pnpm run format` - Format code with Prettier
+- `pnpm run test` - Run unit tests
+- `pnpm run test:e2e` - Run end-to-end tests
+- `pnpm run test:cov` - Run tests with coverage
+
+## Testing
+
+The project uses Jest for testing with strict TypeScript configuration:
+
+```bash
+# Run all tests
+pnpm test
+
+# Run tests in watch mode
+pnpm run test:watch
+
+# Run with coverage report
+pnpm run test:cov
+```
+
+## Code Quality
+
+- **Strict TypeScript config**
+- **ESLint** with comprehensive type-aware rules
+- **Prettier** for consistent code formatting
+- **Conventional Commits** for clear git history
+
+## Development Choices
+
+### Database Design
+
+- **PostgreSQL** chosen for reliability and JSON support for episodes array
+- **Drizzle ORM** for type-safe database operations and excellent TypeScript integration
+
+### Architecture Decisions
+
+- **Modular structure** following NestJS best practices
+- **Global database module** for dependency injection
+- **Strict TypeScript** configuration for maximum type safety
+- **Docker containerization** for consistent development environment
+
+## Why I Chose REST over GraphQL
+
+While the requirements mentioned either GraphQL or RESTful API, I deliberately chose REST for this Star Wars character management system. Here's my reasoning:
+
+**Simplicity & Development Speed**
+
+- For CRUD operations on characters, REST's resource-based approach is more intuitive
+- Less boilerplate code compared to GraphQL resolvers, schemas, and type definitions
+- Faster initial development and easier onboarding for team members
+- Standard HTTP status codes provide clear API contract
+
+**Caching Strategy**
+
+- CDN integration is straightforward for GET endpoints
+- Database query patterns are predictable and easier to optimize
+
+**Performance Considerations**
+
+- For this use case, over-fetching isn't a significant concern
+- Character data is relatively lightweight (name, planet, episodes)
+- Pagination is simpler to implement and reason about
+- Database queries are straightforward without complex join resolvers
+
+That said, I'd consider GraphQL for:
+
+- Frontend-heavy applications with complex data requirements
+- Mobile apps where bandwidth optimization is critical
+- Systems with many different client types needing different data shapes
+
+## My Production Deployment Ideas
+
+Based on my experience with TypeScript backends, here are the key areas I'd focus on for production deployment:
+
+**Security & Configuration**
+
+- Implement proper secret management (AWS Secrets Managert)
+- Add rate limiting (express-rate-limit) and request throttling
+- Configure CORS properly for frontend domains
+- Implement API key authentication for public endpoints
+
+**Database Strategy**
+
+- Set up automated database migrations in deployment pipeline
+- Configure connection pooling
+- Implement read replicas for scaling read operations
+- Set up automated daily backups with point-in-time recovery
+- Add database query monitoring and slow query alerts
+
+**Observability & Monitoring**
+
+- Set up health check endpoints (/health, /ready) for load balancers
+- Add application metrics with Prometheus/Grafana
+- Implement error tracking (Sentry) with proper error boundaries
+- Create alerting for critical metrics (response time, error rate, DB connections)
+
+**Performance & Scaling**
+
+- Add Redis caching layer for frequently accessed character data
+- Configure horizontal scaling with multiple API instances
+
+**Deployment Pipeline**
+
+- Set up blue-green deployments for zero-downtime updates
+- Add security scanning for dependencies and containers
+- Configure proper resource limits and auto-scaling policies
