@@ -1,0 +1,2 @@
+export const MAX_CHARACTER_NAME_LENGTH = 255;
+export const MIN_CHARACTER_NAME_LENGTH = 1;
